@@ -7,6 +7,8 @@ import {
   Switch
 } from 'react-router-dom';
 
+import CountContext from './CountContext';
+
 import InputComponent from './InputComponent';
 import AnotherInputComponent from './AnotherInputComponent';
 import AnotherOutputComponent from './AnotherOutputComponent';
@@ -24,7 +26,13 @@ export default function App() {
     }, []); // simulating "ComponentDidMount"
 
     return (
-      <Router>      
+      <CountContext.Provider
+        value={{
+          count,
+          setCount
+        }}
+      >
+        <Router>      
         <ul>
           <li><Link to="/increment">Add to Count</Link></li>
           <li><Link to="/increment2">Subtract from Count</Link></li>
@@ -33,29 +41,19 @@ export default function App() {
         </ul>
         <Switch>
           <Route path="/increment">
-            <InputComponent 
-              count={count}
-              setCount={setCount}
-            />
+            <InputComponent />
           </Route>
           <Route path="/increment2">
-            <AnotherInputComponent 
-              count={count}
-              setCount={setCount}
-            />
+            <AnotherInputComponent />
           </Route>
           <Route path="/output">
-            <OutputComponent 
-              count={count}
-            />
+            <OutputComponent />
           </Route>
           <Route path="/output2">
-            <AnotherOutputComponent 
-              count={count}
-            />
+            <AnotherOutputComponent />
           </Route>
         </Switch>
       </Router>
-      
+      </CountContext.Provider> 
     );
 }

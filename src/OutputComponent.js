@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CountContext from './CountContext';
 import { useHistory } from 'react-router-dom';
 
 
-export default function Output({
-    count
-}) {
+export default function Output() {
+    const {
+        count,
+    } = useContext(CountContext);    
     let history = useHistory();
     if (Object.keys(count).length === 0) {
         history.push('/increment');

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CountContext from './CountContext';
 
-export default function Increment({
-    count,
-    setCount
-}) {
+export default function Increment() {
+    const {
+        count,
+        setCount        
+    } = useContext(CountContext);
+
     return (
         <div>
             <h1>Click the button to increase the count</h1>

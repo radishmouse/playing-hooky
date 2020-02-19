@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CountContext from './CountContext';
 
-export default function Output({
-    count
-}) {
+export default function Output() {
+    const {
+        count,
+    } = useContext(CountContext);    
+
     return (
         <div>
             <h1>Another view of your count:</h1>        
