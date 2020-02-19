@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom';
 
 export default function Output() {
     const {
-        count,
+        state,
     } = useContext(CountContext);    
     let history = useHistory();
-    if (Object.keys(count).length === 0) {
+    if (Object.keys(state).length === 0) {
         history.push('/increment');
         return <div></div>
     } else {
@@ -19,8 +19,8 @@ export default function Output() {
                     <h1>Your count:</h1>        
                     <ul>
                     {
-                        Object.keys(count).map(dateStamp => {
-                        return <li>{dateStamp}: {count[dateStamp]}</li>    
+                        Object.keys(state).map(dateStamp => {
+                        return <li>{dateStamp}: {state[dateStamp]}</li>    
                         })
                     }
                     </ul>

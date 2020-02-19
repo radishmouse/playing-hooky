@@ -3,7 +3,7 @@ import CountContext from './CountContext';
 
 export default function Output() {
     const {
-        count,
+        state,
     } = useContext(CountContext);    
 
     return (
@@ -11,8 +11,8 @@ export default function Output() {
             <h1>Another view of your count:</h1>        
             <ul>
             {
-                Object.keys(count).map(dateStamp => {
-                return <li>{dateStamp}: {count[dateStamp]}</li>    
+                Object.keys(state).map(dateStamp => {
+                return <li>{dateStamp}: {state[dateStamp]}</li>    
                 })
             }
             </ul>

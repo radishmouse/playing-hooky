@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import CountContext from './CountContext';
+import { count, initialState } from './reducers';   
 
 import InputComponent from './InputComponent';
 import AnotherInputComponent from './AnotherInputComponent';
@@ -15,21 +16,21 @@ import AnotherOutputComponent from './AnotherOutputComponent';
 import OutputComponent from './OutputComponent';
 
 export default function App() {
-    const [count, setCount] = useState({});
+    // const [count, setCount] = useState({});
+    const [state, dispatch] = useReducer(count, initialState);
     useEffect(() => {
       // Here is where we might load from an API
       // or localStorage
       // or both!
-      let savedData = {};
-      setCount(savedData);
-    
+      // let savedData = {};
+      // setCount(savedData);
     }, []); // simulating "ComponentDidMount"
 
     return (
       <CountContext.Provider
         value={{
-          count,
-          setCount
+          state, 
+          dispatch
         }}
       >
         <Router>      
